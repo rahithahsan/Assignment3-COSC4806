@@ -1,6 +1,17 @@
-modules = ["php-8.2"]
+run = "php -S 0.0.0.0:8000 -t ."
+
+entrypoint = "index.php"
+
 [nix]
-channel = "stable-24_05"
+channel = "stable-22_11"
+
+[deployment]
+run = ["php", "-S", "0.0.0.0:8000", "-t", "."]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 8000
+externalPort = 80
 
 [workflows]
 runButton = "Run PHP Server"
@@ -12,8 +23,4 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd project-A3 && php -S 0.0.0.0:8000 router.php"
-
-[[ports]]
-localPort = 8000
-externalPort = 80
+args = "php -S 0.0.0.0:8000 router.php"
