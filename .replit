@@ -12,7 +12,7 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd project-A3 && php -S 0.0.0.0:8000"
+args = "cd project-A3 && php -S 0.0.0.0:8000 -t ."
 
 [[ports]]
 localPort = 8000
