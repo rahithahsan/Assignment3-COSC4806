@@ -1,8 +1,5 @@
 <?php
 
-require_once 'app/core/config.php';
-require_once 'app/database.php';
-
 class App {
 
     protected $controller = 'register';
