@@ -5,7 +5,7 @@ require_once 'app/database.php';
 
 class App {
 
-    protected $controller = 'login';
+    protected $controller = 'register';
     protected $method = 'index';
     protected $params = [];
 
