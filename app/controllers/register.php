@@ -1,10 +1,14 @@
+
 <?php
 
 class Register extends Controller {
 
     public function index() {
         // Check if already logged in
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
         $user = $this->model('User');
 
         if ($user->isLoggedIn()) {
@@ -36,33 +40,25 @@ class Register extends Controller {
         $password = $_POST['password'] ?? '';
         $confirm_password = $_POST['confirm'] ?? '';
 
-        // Basic validation
-        if (empty($username) || empty($password) || empty($confirm_password)) {
-            $_SESSION['flash'] = 'All fields are required.';
-            header('Location: /register');
-            exit;
-        }
-
-        if ($password !== $confirm_password) {
-            $_SESSION['flash'] = 'Passwords do not match.';
-            header('Location: /register');
-            exit;
-        }
-
         $user = $this->model('User');
 
         try {
-            if ($user->register($username, $password, $confirm_password)) {
-                $_SESSION['flash'] = 'Account created successfully! Please log in.';
+            $result = $user->register($username, $password, $confirm_password);
+            
+            if ($result) {
+                // Registration successful
                 header('Location: /login');
+                exit;
             } else {
-                $_SESSION['flash'] = 'Registration failed. Please try again.';
+                // Registration failed - flash message already set in User model
                 header('Location: /register');
+                exit;
             }
         } catch (Exception $e) {
+            error_log("Registration error: " . $e->getMessage());
             $_SESSION['flash'] = 'An error occurred during registration. Please try again.';
             header('Location: /register');
+            exit;
         }
-        exit;
     }
 }

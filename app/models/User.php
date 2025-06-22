@@ -107,48 +107,64 @@ class User {
     public function register($username, $password, $confirm_password) {
         $username = strtolower(trim($username));
         
+        error_log("Registration attempt for username: " . $username);
+        
         // Validation
         if ($username === '' || $password === '' || $confirm_password === '') {
             $_SESSION['flash'] = 'All fields are required.';
+            error_log("Registration failed: Missing fields");
             return false;
         }
 
         if ($password !== $confirm_password) {
             $_SESSION['flash'] = 'Passwords do not match.';
+            error_log("Registration failed: Password mismatch");
             return false;
         }
 
         if (!$this->password_meets_policy($password)) {
             $_SESSION['flash'] = 'Password must be at least 8 characters with uppercase, lowercase, digit, and special character.';
+            error_log("Registration failed: Password policy");
             return false;
         }
 
         // Check if username already exists
-        $db = db_connect();
-        if (!$db) {
-            $_SESSION['flash'] = 'Database connection failed. Please try again later.';
-            return false;
-        }
-        $statement = $db->prepare("SELECT username FROM users WHERE username = :name");
-        $statement->bindValue(':name', $username);
-        $statement->execute();
-        
-        if ($statement->fetch()) {
-            $_SESSION['flash'] = 'Username already exists.';
-            return false;
-        }
+        try {
+            $db = db_connect();
+            if (!$db) {
+                $_SESSION['flash'] = 'Database connection failed. Please try again later.';
+                error_log("Registration failed: Database connection failed");
+                return false;
+            }
+            
+            $statement = $db->prepare("SELECT username FROM users WHERE username = :name");
+            $statement->bindValue(':name', $username);
+            $statement->execute();
+            
+            if ($statement->fetch()) {
+                $_SESSION['flash'] = 'Username already exists.';
+                error_log("Registration failed: Username exists");
+                return false;
+            }
 
-        // Create user
-        $password_hash = password_hash($password, PASSWORD_DEFAULT);
-        $statement = $db->prepare("INSERT INTO users (username, password_hash, created_at) VALUES (:name, :hash, NOW())");
-        $statement->bindValue(':name', $username);
-        $statement->bindValue(':hash', $password_hash);
-        
-        if ($statement->execute()) {
-            $_SESSION['flash'] = 'Account created successfully! Please log in.';
-            return true;
-        } else {
-            $_SESSION['flash'] = 'Error creating account. Please try again.';
+            // Create user
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+            $statement = $db->prepare("INSERT INTO users (username, password_hash, created_at) VALUES (:name, :hash, NOW())");
+            $statement->bindValue(':name', $username);
+            $statement->bindValue(':hash', $password_hash);
+            
+            if ($statement->execute()) {
+                $_SESSION['flash'] = 'Account created successfully! Please log in.';
+                error_log("Registration successful for: " . $username);
+                return true;
+            } else {
+                $_SESSION['flash'] = 'Error creating account. Please try again.';
+                error_log("Registration failed: Database insert failed");
+                return false;
+            }
+        } catch (Exception $e) {
+            $_SESSION['flash'] = 'Database error occurred. Please try again.';
+            error_log("Registration failed: Database exception - " . $e->getMessage());
             return false;
         }
     }
