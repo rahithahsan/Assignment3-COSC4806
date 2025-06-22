@@ -87,11 +87,11 @@ class User {
                 $userFailed++;
                 $_SESSION['failed'][$username] = $userFailed;
                 
-                if ($userFailed >= MAX_FAILED) {
-                    $_SESSION['lockout_until'][$username] = $now + LOCKOUT_SECONDS;
-                    $_SESSION['flash'] = "Too many failed attempts. Locked for " . LOCKOUT_SECONDS . " seconds.";
+                if ($userFailed >= 5) { // MAX_FAILED
+                    $_SESSION['lockout_until'][$username] = $now + 60; // LOCKOUT_SECONDS
+                    $_SESSION['flash'] = "Too many failed attempts. Locked for 60 seconds.";
                 } else {
-                    $tries = MAX_FAILED - $userFailed;
+                    $tries = 5 - $userFailed; // MAX_FAILED
                     $_SESSION['flash'] = "Invalid password. {$tries} attempt(s) left.";
                 }
             } else {
