@@ -41,3 +41,38 @@ Converting a legacy procedural app into a proper MVC structure.
 * Using Replit Secrets to keep credentials out of source control.
 
 * Quick UI prototyping with Bootstrap & Feather icons.
+
+
+## 🗺️ Sequence diagram
+```mermaid
+%%  COSC 4806 – Assignment 3  •  MVC Request Flow
+sequenceDiagram
+    autonumber
+    participant Client as Browser
+    participant Router as App (router)
+    participant C as Controller
+    participant M as User Model
+    participant DB as MariaDB
+    participant V as View (Blade-PHP)
+
+    Client->>Router: HTTP GET /login
+    Router->>C: new Login@index()
+    C->>M: authenticate(u,p)
+    M->>DB: SELECT * FROM users…
+    DB-->>M: row (or NULL)
+    alt success
+        M-->>C: true
+        C->>Router: redirect /home
+        Router->>C: new Home@index()
+        C->>V: render home/index.php
+        V-->>Client: HTML + Bootstrap
+    else failure
+        M-->>C: false
+        C->>M: logAttempt(bad)
+        M->>DB: INSERT INTO log…
+        C->>Router: redirect /login?err
+        Router->>C: new Login@index()
+        C->>V: render login/index.php (flash msg)
+        V-->>Client: HTML form
+    end
+```
