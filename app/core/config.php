@@ -1,32 +1,18 @@
 <?php
-
-define('VERSION', '0.7.0');
+/*------------------------------------------------
+ | Core constants
+ *-----------------------------------------------*/
+define('VERSION', '1.0.0');
 
 define('DS', DIRECTORY_SEPARATOR);
-define('ROOT', dirname(__DIR__));
-define('APPS', ROOT . DS . 'app');
-define('CORE', ROOT . DS . 'core');
-define('LIBS', ROOT . DS . 'lib');
-define('MODELS', ROOT . DS . 'models');
-define('VIEWS', ROOT . DS . 'views');
-define('CONTROLLERS', ROOT . DS . 'controllers');
-define('LOGS', ROOT . DS . 'logs');	
-define('FILES', ROOT . DS. 'files');
+define('ROOT', dirname(__DIR__));       // one level above /core
+define('APPS', ROOT);
+define('CORE', APPS . DS . 'core');
+define('MODELS', APPS . DS . 'models');
+define('VIEWS', APPS . DS . 'views');
+define('CONTROLLERS', APPS . DS . 'controllers');
 
-/* ---------- Database configuration (updated for Assignment 3) ---------- */
-define('DB_HOST', '7x3qv.h.filess.io');
-define('DB_PORT', 3305);
-define('DB_NAME', 'cosc4806_storyline');
-define('DB_USER', 'cosc4806_storyline');
-define('DB_PASSWORD', getenv('DB_PASS'));
-
-// Debug - remove in production
-if (!getenv('DB_PASS')) {
-    error_log("Warning: DB_PASS environment variable is not set");
-}
-
-/* Login-rate-limit settings */
-define('MAX_FAILED',      5);   // lock out after 5 bad tries
-define('LOCKOUT_SECONDS', 60);  // …for one minute
-
-date_default_timezone_set('America/Toronto');
+/*------------------------------------------------
+ | Pull DB constants from separate file
+ *-----------------------------------------------*/
+require_once APPS . '/config/database.php';

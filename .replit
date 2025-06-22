@@ -1,26 +1,13 @@
-run = "php -S 0.0.0.0:8000 -t ."
-
+run = "php -S 0.0.0.0:8000 index.php"
 entrypoint = "index.php"
 
 [nix]
 channel = "stable-22_11"
 
 [deployment]
-run = ["php", "-S", "0.0.0.0:8000", "-t", "."]
+run = ["php", "-S", "0.0.0.0:8000", "index.php"]
 deploymentTarget = "cloudrun"
 
 [[ports]]
 localPort = 8000
 externalPort = 80
-
-[workflows]
-runButton = "Run PHP Server"
-
-[[workflows.workflow]]
-name = "Run PHP Server"
-author = 42406827
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "php -S 0.0.0.0:8000 router.php"
