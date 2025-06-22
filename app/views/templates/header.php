@@ -34,10 +34,10 @@ if (!isset($_SESSION['auth'])) {
             Dropdown
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="/menu/loginInfo">How Login Works</a></li>
+            <li><a class="dropdown-item" href="/menu/registerInfo">How Registration Works</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="https://algomau.ca/" target="_blank">Algoma U</a></li>
           </ul>
         </li>
         <li class="nav-item">
