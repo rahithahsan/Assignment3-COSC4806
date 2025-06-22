@@ -57,5 +57,38 @@ if ($testResult) {
     }
 }
 
-echo "\nDone!\n";
+echo "\n5. Testing duplicate username registration...\n";
+$duplicateResult = $user->register("testuser123", $testPassword, $testPassword);
+if (!$duplicateResult) {
+    echo "✓ Duplicate username correctly rejected\n";
+    if (isset($_SESSION['flash'])) {
+        echo "Message: " . $_SESSION['flash'] . "\n";
+    }
+} else {
+    echo "✗ Duplicate username was incorrectly accepted\n";
+}
+
+echo "\n6. Testing password mismatch...\n";
+$mismatchResult = $user->register("testuser456", $testPassword, "DifferentPass123!");
+if (!$mismatchResult) {
+    echo "✓ Password mismatch correctly rejected\n";
+    if (isset($_SESSION['flash'])) {
+        echo "Message: " . $_SESSION['flash'] . "\n";
+    }
+} else {
+    echo "✗ Password mismatch was incorrectly accepted\n";
+}
+
+echo "\n7. Testing weak password...\n";
+$weakResult = $user->register("testuser789", "weak", "weak");
+if (!$weakResult) {
+    echo "✓ Weak password correctly rejected\n";
+    if (isset($_SESSION['flash'])) {
+        echo "Message: " . $_SESSION['flash'] . "\n";
+    }
+} else {
+    echo "✗ Weak password was incorrectly accepted\n";
+}
+
+echo "\nTesting complete!\n";
 ?>
