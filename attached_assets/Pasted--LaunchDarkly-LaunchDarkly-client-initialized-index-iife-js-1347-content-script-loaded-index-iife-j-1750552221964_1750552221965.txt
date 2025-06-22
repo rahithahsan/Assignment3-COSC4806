@@ -1,0 +1,106 @@
+[LaunchDarkly] LaunchDarkly client initialized
+index.iife.js:1347 content script loaded
+index.iife.js:1 initial theme: light
+/api/v1/auth-anon:1 
+            
+            
+           Failed to load resource: the server responded with a status of 409 ()Understand this error
+6747e1e9-48ad0ba87c846593.js:1 Uncaught (in promise) TypeError: i.enterprise.execute is not a function
+    at 6747e1e9-48ad0ba87c846593.js:1:35441Understand this error
+_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+/~:1 Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
+_app-6b0089c83b1309ba.js:38 [hCaptcha] There was an error in your callback.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this error
+_app-6b0089c83b1309ba.js:38 pn
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this error
+41_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+index.iife.js:133 Object
+43_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+57Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this error
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'ambient-light-sensor'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'battery'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'execution-while-not-rendered'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'execution-while-out-of-viewport'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'layout-animations'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'legacy-image-formats'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'navigation-override'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'oversized-images'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'publickey-credentials'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'speaker-selection'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'unoptimized-images'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'unsized-media'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Unrecognized feature: 'pointer-lock'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Allow attribute will take precedence over 'allowfullscreen'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+framework-a818883e88d690fb.js:1 Allow attribute will take precedence over 'allowpaymentrequest'.
+_ @ framework-a818883e88d690fb.js:1Understand this warning
+3_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+index.iife.js:133 Objecte: MouseEvent {isTrusted: true, screenX: 1300, screenY: 225, clientX: 1300, clientY: 100, …}range: Range {commonAncestorContainer: main#main-content.css-6t7ber, startContainer: main#main-content.css-6t7ber, startOffset: 3, endContainer: main#main-content.css-6t7ber, endOffset: 3, …}tooltip: div.bbai-tooltip[[Prototype]]: Object
+index.iife.js:133 Objecte: MouseEvent {isTrusted: true, screenX: 1300, screenY: 225, clientX: 1300, clientY: 100, …}range: Range {commonAncestorContainer: main#main-content.css-6t7ber, startContainer: main#main-content.css-6t7ber, startOffset: 3, endContainer: main#main-content.css-6t7ber, endOffset: 3, …}tooltip: div.bbai-tooltip[[Prototype]]: Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+_app-6b0089c83b1309ba.js:38 WARN: A component changed from uncontrolled to controlled.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+4_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+11_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+19_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+index.iife.js:133 Object
+36_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+_app-6b0089c83b1309ba.js:38 WARN: A component changed from uncontrolled to controlled.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+136_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+3_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+index.iife.js:133 Object
+11_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+index.iife.js:133 Object
+185_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid dropping events.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+_app-6b0089c83b1309ba.js:38 WARN: A component changed from uncontrolled to controlled.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+_app-6b0089c83b1309ba.js:38 WARN: A component changed from controlled to uncontrolled.
+(anonymous) @ _app-6b0089c83b1309ba.js:38Understand this warning
+_app-6b0089c83b1309ba.js:38 [LaunchDarkly] Exceeded event queue capacity. Increase capacity to avoid d
