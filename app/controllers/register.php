@@ -21,16 +21,12 @@ class Register extends Controller {
     }
 
     public function create() {
-        // Start output buffering to prevent header issues
-        ob_start();
-        
         // Check if session is already started
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            ob_end_clean();
             header('Location: /register');
             exit;
         }
@@ -45,14 +41,12 @@ class Register extends Controller {
             $result = $user->register($username, $password, $confirm_password);
             
             if ($result) {
-                // Registration successful - clean buffer and redirect
-                ob_end_clean();
+                // Registration successful - redirect to login
                 error_log("Registration successful, redirecting to login");
                 header('Location: /login');
                 exit;
             } else {
                 // Registration failed - flash message already set in User model
-                ob_end_clean();
                 error_log("Registration failed, redirecting back to register");
                 header('Location: /register');
                 exit;
@@ -60,7 +54,6 @@ class Register extends Controller {
         } catch (Exception $e) {
             error_log("Registration error: " . $e->getMessage());
             $_SESSION['flash'] = 'An error occurred during registration. Please try again.';
-            ob_end_clean();
             header('Location: /register');
             exit;
         }

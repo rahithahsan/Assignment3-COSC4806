@@ -21,11 +21,6 @@ class Login extends Controller {
     }
 
     public function authenticate() {
-        // Start output buffering to prevent header issues
-        if (!ob_get_level()) {
-            ob_start();
-        }
-        
         // Check if session is already started
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
