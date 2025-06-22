@@ -1,4 +1,4 @@
-# COSC 4806 – Assignment 3: MVC PHP Login System (Replit + GitHub)
+# COSC 4806 – Assignment 3: MVC PHP Login System (Replit + GitHub) - Rahith Ahsan
 
 ## Overview
 
