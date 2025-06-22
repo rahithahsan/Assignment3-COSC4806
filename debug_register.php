@@ -35,7 +35,12 @@ try {
 
 // Test User model
 echo "\n3. Testing User model...\n";
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Include the User class
+require_once 'app/models/User.php';
 $user = new User();
 
 // Test password policy function
