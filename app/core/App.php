@@ -1,29 +1,38 @@
 <?php
+/**
+ * Tiny front-controller / router
+ *   /controller/method/param1/…   (default: login@index)
+ */class App
+{
+    protected $controller = 'login';   // <= untyped
+    protected string $method = 'index';
+    protected array  $params = [];
 
-class App {
-
-    protected $controller = 'register';
-    protected $method = 'index';
-    protected $params = [];
-
-    public function __construct() {
-        $url = $this->parseUrl();
-
-        // Check if controller exists
-        if (isset($url[0]) && file_exists('app/controllers/' . $url[0] . '.php')) {
-            $this->controller = $url[0];
-            unset($url[0]);
+    public function __construct()
+    {
+        if (isset($_SESSION['auth'])) {
+            $this->controller = 'home';
         }
 
-        require_once 'app/controllers/' . $this->controller . '.php';
-        $this->controller = new $this->controller;
+        $url = $this->parseUrl();
 
-        // Check if method exists
-        if (isset($url[1])) {
-            if (method_exists($this->controller, $url[1])) {
-                $this->method = $url[1];
-                unset($url[1]);
-            }
+        if (empty($url[1])) {
+            $url[1] = 'login';
+        }
+
+        if (!empty($url[1]) &&
+            file_exists(CONTROLLERS . DS . $url[1] . '.php')) {
+            $this->controller = $url[1];
+            unset($url[1]);
+        }
+
+        require_once CONTROLLERS . DS . $this->controller . '.php';
+        $this->controller = new $this->controller;   // now allowed
+
+        if (!empty($url[2]) &&
+            method_exists($this->controller, $url[2])) {
+            $this->method = $url[2];
+            unset($url[2]);
         }
 
         $this->params = $url ? array_values($url) : [];
@@ -31,25 +40,10 @@ class App {
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
-    public function parseUrl() {
-        if (isset($_SERVER['REQUEST_URI'])) {
-            $url = $_SERVER['REQUEST_URI'];
-            
-            // Remove query string if present
-            $url = strtok($url, '?');
-            
-            // Remove leading and trailing slashes
-            $url = trim($url, '/');
-            
-            // If empty, return empty array (will use default controller)
-            if (empty($url)) {
-                return [];
-            }
-            
-            // Split by slash and filter out empty elements
-            $url = explode('/', $url);
-            return array_filter($url);
-        }
-        return [];
+    private function parseUrl(): array
+    {
+        $raw = $_SERVER['REQUEST_URI'] ?? '/';
+        return explode('/', filter_var(rtrim($raw, '/'), FILTER_SANITIZE_URL));
     }
 }
+
