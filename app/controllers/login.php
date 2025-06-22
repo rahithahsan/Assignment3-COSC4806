@@ -1,4 +1,3 @@
-
 <?php
 
 class Login extends Controller {
@@ -8,7 +7,7 @@ class Login extends Controller {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        
+
         $user = $this->model('User');
 
         if ($user->isLoggedIn()) {
@@ -38,13 +37,15 @@ class Login extends Controller {
 
         try {
             $result = $user->authenticate($username, $password);
-            
+
             if ($result) {
-                // Authentication successful
+                // Login successful - redirect to home
+                error_log("Login successful, redirecting to home");
                 header('Location: /home');
                 exit;
             } else {
-                // Authentication failed - flash message already set in User model
+                // Login failed - flash message already set in User model
+                error_log("Login failed, redirecting back to login");
                 header('Location: /login');
                 exit;
             }

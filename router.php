@@ -13,5 +13,8 @@ if ($path !== '/' && file_exists(__DIR__ . $path) && !is_dir(__DIR__ . $path)) {
     return false; // Let PHP serve the file directly
 }
 
-// Otherwise, route through index.php without modifying $_GET
+// Set the REQUEST_URI for the application
+$_SERVER['REQUEST_URI'] = $request_uri;
+
+// Route through index.php
 require_once 'index.php';
