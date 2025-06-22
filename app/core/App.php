@@ -33,10 +33,23 @@ class App {
 
     public function parseUrl() {
         if (isset($_SERVER['REQUEST_URI'])) {
-            $url = rtrim($_SERVER['REQUEST_URI'], '/');
-            $url = filter_var($url, FILTER_SANITIZE_URL);
+            $url = $_SERVER['REQUEST_URI'];
+            
+            // Remove query string if present
+            $url = strtok($url, '?');
+            
+            // Remove leading and trailing slashes
+            $url = trim($url, '/');
+            
+            // If empty, return empty array (will use default controller)
+            if (empty($url)) {
+                return [];
+            }
+            
+            // Split by slash and filter out empty elements
             $url = explode('/', $url);
             return array_filter($url);
         }
+        return [];
     }
 }

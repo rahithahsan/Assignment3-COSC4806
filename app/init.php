@@ -13,4 +13,3 @@ require_once 'app/core/config.php';
 require_once 'app/database.php';
 require_once 'app/core/Controller.php';
 require_once 'app/core/App.php';
-require_once 'core/App.php';
