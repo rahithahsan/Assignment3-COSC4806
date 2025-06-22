@@ -1,17 +1,27 @@
 <?php
-if (isset($_SESSION['auth']) == 1) {
-    header('Location: /home');
+/* Redirect logged-in users away from public pages */
+if (isset($_SESSION['auth'])) {
+    header('Location: /home'); exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="icon" href="/favicon.png">
-    <title>COSC 4806</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+<head>
+  <meta charset="UTF-8">
+  <title>COSC 4806 – Login</title>
+
+  <!-- Bootstrap 5 & Feather icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons" defer></script>
+
+  <link rel="icon" href="/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body class="bg-light">
+
+<nav class="navbar navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/">COSC 4806</a>
+  </div>
+</nav>
