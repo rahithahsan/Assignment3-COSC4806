@@ -7,13 +7,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
 // Handle flash messages
 $notice = '';
-<?php
-// Start session if not already started
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
-
-$notice = '';
 if (!empty($_SESSION['flash'])) {
   $notice = $_SESSION['flash'];
   unset($_SESSION['flash']);
