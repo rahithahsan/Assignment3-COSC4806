@@ -1,13 +1,11 @@
 <?php
 
-class Home extends Controller {
-
-    public function index() {
-      $user = $this->model('User');
-      $data = $user->test();
-			
-	    $this->view('home/index');
-	    die;
+class Home extends Controller
+{
+    public function index(): void
+    {
+        if (!isset($_SESSION['auth'])) { header('Location:/login'); exit; }
+        $this->view('home/index');
     }
-
 }
+
