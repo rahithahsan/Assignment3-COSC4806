@@ -20,6 +20,11 @@ define('DB_NAME', 'cosc4806_storyline');
 define('DB_USER', 'cosc4806_storyline');
 define('DB_PASSWORD', getenv('DB_PASS'));
 
+// Debug - remove in production
+if (!getenv('DB_PASS')) {
+    error_log("Warning: DB_PASS environment variable is not set");
+}
+
 /* Login-rate-limit settings */
 define('MAX_FAILED',      5);   // lock out after 5 bad tries
 define('LOCKOUT_SECONDS', 60);  // …for one minute

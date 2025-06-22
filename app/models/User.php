@@ -120,6 +120,10 @@ class User {
 
         // Check if username already exists
         $db = db_connect();
+        if (!$db) {
+            $_SESSION['flash'] = 'Database connection failed. Please try again later.';
+            return false;
+        }
         $statement = $db->prepare("SELECT username FROM users WHERE username = :name");
         $statement->bindValue(':name', $username);
         $statement->execute();

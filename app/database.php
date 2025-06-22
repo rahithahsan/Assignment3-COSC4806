@@ -9,8 +9,9 @@ function db_connect() {
         $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         return $dbh;
     } catch (PDOException $e) {
-        //We should set a global variable here so we know the DB is down
         error_log("Database connection failed: " . $e->getMessage());
+        // For debugging - remove in production
+        echo "Database connection error: " . $e->getMessage();
         return null;
     }
 }
